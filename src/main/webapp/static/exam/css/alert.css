@@ -1,0 +1,45 @@
+/*弹框*/
+.fixed{ position:fixed; z-index:99999; top:0; left:0; right:0;  bottom:0; background:rgba(0,0,0,0.5); display:none;}
+.prompt{ width:512px; height:610px; margin:20% auto 0; overflow:hidden; background:url(../img/prompt.png) no-repeat;}
+.prompt img{ width:169px; margin:221px auto 0; display:block;}
+
+.answer{ width:513px; height:640px; margin:20% auto 0; overflow:hidden; background:url(../img/dda.png) no-repeat;}
+.answer img{ width:169px; margin:155px auto 0; display:block;}
+
+.sister{ width:512px; height:640px; margin:20% auto 0; overflow:hidden; background:url(../img/sister.png) no-repeat;}
+.sister img{ width:169px; margin:221px auto 0; display:block;}
+
+.testPaper{ width:512px; height:610px; margin:20% auto 0; overflow:hidden; background:url(../img/testPaper.png) no-repeat;}
+.testPaper img{ width:169px; margin:221px auto 0; display:block;}
+
+.ruler{ width:572px; margin:16% auto 0; overflow:hidden; background:#fff; border-radius:7px; }
+.ruler_tit{ font-size:26px; color:#fff; background:url(../img/ruler_03.png) no-repeat center; height:138px; width:100%; font-weight:bold; line-height:138px; text-align:center;}
+.ruler .exam_con{ padding:20px 56px;}
+.ruler .exam_con_tit{ background:url(../img/exam_05.png) no-repeat left center; padding-left:20px; font-size:24px; color:#5552b4; line-height:40px; margin-top:14px; max-height:10000px;}
+.ruler .exam_con_con{ font-size:24px; color:#767575; line-height:30px; margin-top:10px; max-height:10000px; padding-left:20px;}
+.ruler .exam_con_con1{ margin-top:16px;  padding-left:26px;}
+.ruler .exam_con_con1>P{ padding:6px 0; font-size:22px; color:#a0a0a0; overflow:hidden;}
+.ruler .exam_con_con1>P>span{ background:url(../img/exam_09.png) no-repeat left center; line-height:30px; height:30x; width:27px; float:left; text-align:center; font-size:18px; color:#574fbe; margin-right:15px;}
+.know{ margin-top:60px; text-align:center;}
+.know img{ width:220px; height:122px;}
+
+.testSister{overflow:hidden;}
+.testSister img{ width:100%; display:block;}
+
+.draw{overflow:hidden;}
+.draw img{ width:100%;  display:block;}
+
+.ok{ width:600px; height:762px; margin:20% auto 0; overflow:hidden; background:url(../img/ok.png) no-repeat;}
+.ok img{ width:169px; margin:336px auto 0; display:block;}
+
+.ale{ width:640px;  margin:42% auto 0; overflow:hidden; }
+.ale img{ width:638px; display:block; margin:0 auto;}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+.onlyLine {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: "微软雅黑";
+
+}
+  
+
+*:focus {outline: none;}
+html,body {
+  width: 100%;
+}
+body -webkit-scrollbar {
+  width: 0;
+}
+
+img {
+  border: none;
+  vertical-align: bottom;
+}
+a {
+  text-decoration: none;
+  color: #7f7f7f;
+}
+input[type=button],
+input[type=submit] {
+  -webkit-appearance: none;
+  outline: none;
+}
+/*清除浮动*/
+.clear {
+  display: block;
+  clear: both;
+}
+/*隐藏元素*/
+.hide {
+  display: none;
+}
+ul li {
+  list-style: none;
+}
+i,b{
+	-style: normal;font-weight: normal;}
+
+input[type="submit"],input[type="reset"],input[type="button"],button { -webkit-appearance: none; }
+::-webkit-input-placeholder { /* WebKit browsers */ 
+color: #c3c3c3; 
+} 
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+color: #c3c3c3; 
+} 
+::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+color: #c3c3c3; 
+} 
+:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+color: #c3c3c3; 
+}  
+h1,h2,h3,h4,h5{ font-weight:normal;}
+/*==for IE6/7 Maxthon2==*/
+
+
+
+
+
+

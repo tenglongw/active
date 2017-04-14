@@ -11,7 +11,7 @@ public class QuestionAnswer {
 
     private Integer questionId;
 
-    private String iscorrect;
+    private String isCorrect;
 
     private Date updateTime;
 
@@ -49,12 +49,12 @@ public class QuestionAnswer {
         this.questionId = questionId;
     }
 
-    public String getIscorrect() {
-        return iscorrect;
+    public String getIsCorrect() {
+        return isCorrect;
     }
 
-    public void setIscorrect(String iscorrect) {
-        this.iscorrect = iscorrect == null ? null : iscorrect.trim();
+    public void setIsCorrect(String isCorrect) {
+        this.isCorrect = isCorrect == null ? null : isCorrect.trim();
     }
 
     public Date getUpdateTime() {

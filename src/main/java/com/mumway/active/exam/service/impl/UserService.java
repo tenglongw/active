@@ -1,19 +1,24 @@
 package com.mumway.active.exam.service.impl;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import javax.annotation.Resource;
 
-import com.mumway.active.exam.IDao.UserMapper;
+import org.springframework.stereotype.Service;
+
+import com.mumway.active.exam.Mapper.UserMapper;
 import com.mumway.active.exam.domain.User;
 import com.mumway.active.exam.service.IUserService;
 
 @Service("userService")
 public class UserService implements IUserService {
 	@Resource
-	private UserMapper userDao;
+	private UserMapper userMapper;
+	
+	/* (non-Javadoc)
+	 * @see com.mumway.active.exam.service.IUserService#getUserById(int)
+	 */
 	public User getUserById(int userId) {
 		// TODO Auto-generated method stub
-		return null;
+		return userMapper.selectByPrimaryKey(userId);
 	}
 
 }

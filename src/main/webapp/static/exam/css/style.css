@@ -1,0 +1,102 @@
+/*header*/
+header{ height:64px; position:fixed; top:0; left:0; width:100%; background:#f6f6f9; z-index:9999;}
+header .top{ width:100%;}
+header .top a{ width:50%; float:left; line-height:64px; text-align:center; font-size:32px; color:#5552b4;}
+header .top a.cur{ color:#fbfbfc; background:#5552b4;}
+
+footer{ height:98px; position:fixed; bottom:0; left:0; width:100%; z-index:9999;}
+.foot_but{ overflow:hidden; width:100%; line-height:98px;}
+.foot_but a{ width:33.3%; background:#f6f6f9; height:98px; line-height:98px; font-size:32px; color:#5552b4; border-right:1px solid #c0bebe; float:left; text-align:center;}
+.foot_but a.cur{ background:#5552b4; color:#f9f9fc;}
+.foot_but a:nth-child(3){ border-right:none;}
+
+.exam .foot_but a{ width:50%;}
+.exam .foot_but a:nth-child(2){ border-right:none;}
+
+section {
+	width: 640px;
+	position: relative;
+	margin-bottom:98px;
+}
+.section{ margin-top:64px;}
+.dati{ overflow:hidden; width:100%; overflow-y:auto;}
+.dati>li{ background:#fff; margin-bottom:10px; padding:12px 35px 28px; overflow:hidden;}
+.dati_p1{ font-size:24px; color:#767575; line-height:40px; float:left;}
+.dati_p1 span{ color:#5452b3;}
+.dati_d1{ overflow:hidden;}
+.dati_p2{ font-size:24px; color:#767575; line-height:36px; border-bottom:1px solid #cccccc; padding:12px 0; overflow:hidden;}
+.dati_p2 input{ display:none;}
+.dati_p2 i{ width:36px; height:36px; display:inline-block; border-radius:50%; background:#0d0d0d; color:#fdfcfc; font-size:22px; line-height:36px; text-align:center; font-style:normal; margin-right:22px; float:left;}
+.dati_p2 span{ float:left; width:500px;}
+.dati_p2.curr{ color:#5552b4;}
+.dati_p2.curr i{ background:#5552b4;}
+.dati_p2 span.rig{ float:right; background:url(../img/right_03.png) no-repeat right center; padding-right:50px; font-size:24px; color:#767676; width:150px;}
+.fillIn{ background:#fff; padding:10px 35px; overflow:hidden; }
+.fillIn .name{ padding:12px 0; line-height:40px; overflow:hidden;}
+.fillIn .name_tit{ float:left; font-size:22px; color:#767575;}
+.fillIn input{ border:none; border-bottom:1px solid #cccccc; height:40px; font-size:24px; color:#767575; margin-right:5px; width:
+260px; float:left;}
+.fillIn .need{ float:left; font-size:20px; color:#ff7070;}
+
+/*判断未考试-首页*/
+.exam_tit{ font-size:26px; color:#fff; font-weight:bold; line-height:64px; text-align:center; background:#5552b4 url(../img/bg.png) no-repeat center;}
+.exam_con{ padding:40px 34px;}
+.exam_con_tit{ background:url(../img/exam_05.png) no-repeat left center; padding-left:20px; font-size:24px; color:#5552b4; line-height:40px; margin-top:20px; max-height:10000px;}
+.exam_con_con{ font-size:24px; color:#767575; line-height:30px; margin-top:20px; max-height:10000px; padding-left:44px;}
+.exam_con_con1{ margin-top:20px;  padding-left:44px;}
+.exam_con_con1>P{ padding:6px 0; font-size:22px; color:#a0a0a0; overflow:hidden;}
+.exam_con_con1>P>span{ background:url(../img/exam_09.png) no-repeat left center; line-height:30px; height:30x; width:27px; float:left; text-align:center; font-size:18px; color:#574fbe; margin-right:15px;}
+
+/*判断已考试-首页*/
+.test{ background:#fff; padding:20px 0; margin-bottom:10px;}
+.test_tit{ text-align:center; font-size:32px; color:#727272; margin-bottom:26px;}
+.test_num{ overflow:hidden; width:355px; margin:0 auto;}
+.test_num span{ font-size:26px; color:#373737; float:left; line-height:40px; text-align:right; width:90px;}
+.test_num i{ border:none; border-bottom:1px solid #cccccc; height:40px; font-size:24px; color:#767575; margin-right:5px; width:
+260px; float:left; text-align:center; font-style:normal;}
+.test_aunt{ overflow:hidden;}
+.test_aunt li{ margin-bottom:10px; background:#fff; padding:25px 75px;}
+.test_aunt li .test_num{ width:50%; float:left; padding:10px 0;}
+.test_aunt li .test_num span{ width:auto; font-size:24px; color:#767676;}
+.test_aunt li .test_num i{ width:100px; margin-left:5px;}
+.test_aunt li .test_num:nth-child(1) span{ font-size:32px; color:#373737; }
+
+/*弹框*/
+.fixed{ position:fixed; z-index:99999; top:0; left:0; right:0;  bottom:0; background:rgba(0,0,0,0.5); display:none;}
+.prompt{ width:512px; height:610px; margin:20% auto 0; overflow:hidden; background:url(../img/prompt.png) no-repeat;}
+.prompt img{ width:169px; margin:221px auto 0; display:block;}
+
+.answer{ width:513px; height:640px; margin:20% auto 0; overflow:hidden; background:url(../img/dda.png) no-repeat;}
+.answer img{ width:169px; margin:155px auto 0; display:block;}
+
+.sister{ width:512px; height:640px; margin:20% auto 0; overflow:hidden; background:url(../img/sister.png) no-repeat;}
+.sister img{ width:169px; margin:221px auto 0; display:block;}
+
+.testPaper{ width:512px; height:610px; margin:20% auto 0; overflow:hidden; background:url(../img/testPaper.png) no-repeat;}
+.testPaper img{ width:169px; margin:221px auto 0; display:block;}
+
+.ruler{ width:572px; margin:16% auto 0; overflow:hidden; background:#fff; border-radius:7px; }
+.ruler_tit{ font-size:26px; color:#fff; background:url(../img/ruler_03.png) no-repeat center; height:138px; width:100%; font-weight:bold; line-height:138px; text-align:center;}
+.ruler .exam_con{ padding:20px 56px;}
+.ruler .exam_con_tit{ background:url(../img/exam_05.png) no-repeat left center; padding-left:20px; font-size:24px; color:#5552b4; line-height:40px; margin-top:14px; max-height:10000px;}
+.ruler .exam_con_con{ font-size:24px; color:#767575; line-height:30px; margin-top:10px; max-height:10000px; padding-left:20px;}
+.ruler .exam_con_con1{ margin-top:16px;  padding-left:26px;}
+.ruler .exam_con_con1>P{ padding:6px 0; font-size:22px; color:#a0a0a0; overflow:hidden;}
+.ruler .exam_con_con1>P>span{ background:url(../img/exam_09.png) no-repeat left center; line-height:30px; height:30x; width:27px; float:left; text-align:center; font-size:18px; color:#574fbe; margin-right:15px;}
+.know{ margin-top:60px; text-align:center;}
+.know img{ width:220px; height:122px;}
+
+.testSister{overflow:hidden;}
+.testSister img{ width:100%; display:block;}
+
+.draw{overflow:hidden;}
+.draw img{ width:100%;  display:block;}
+
+.ok{ width:600px; height:762px; margin:20% auto 0; overflow:hidden; background:url(../img/ok.png) no-repeat;}
+.ok img{ width:169px; margin:336px auto 0; display:block;}
+
+.ale{ width:640px;  margin:42% auto 0; overflow:hidden; }
+.ale img{ width:638px; display:block; margin:0 auto;}
+
+
+

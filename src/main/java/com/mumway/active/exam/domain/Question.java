@@ -1,6 +1,7 @@
 package com.mumway.active.exam.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Question {
     private Integer id;
@@ -16,7 +17,9 @@ public class Question {
     private Date updateTime;
 
     private Date createTime;
-
+    
+    private List<QuestionAnswer> qAnswers;
+    
     public Integer getId() {
         return id;
     }
@@ -72,4 +75,12 @@ public class Question {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+	public List<QuestionAnswer> getqAnswers() {
+		return qAnswers;
+	}
+
+	public void setqAnswers(List<QuestionAnswer> qAnswers) {
+		this.qAnswers = qAnswers;
+	}
 }
