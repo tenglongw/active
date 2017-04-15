@@ -7,6 +7,8 @@ public class QuestionType {
     private Integer id;
 
     private String name;
+    
+    private Integer questionNumber;
 
     private Date updateTime;
 
@@ -30,7 +32,15 @@ public class QuestionType {
         this.name = name == null ? null : name.trim();
     }
 
-    public Date getUpdateTime() {
+    public Integer getQuestionNumber() {
+		return questionNumber;
+	}
+
+	public void setQuestionNumber(Integer questionNumber) {
+		this.questionNumber = questionNumber;
+	}
+
+	public Date getUpdateTime() {
         return updateTime;
     }
 

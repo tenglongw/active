@@ -3,7 +3,6 @@ package com.mumway.active.exam.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.json.JsonArray;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSONArray;
 import com.mumway.active.exam.domain.QuestionType;
 import com.mumway.active.exam.service.IExamService;
 import com.mumway.active.utile.Result;

@@ -4,12 +4,14 @@
   <resultMap id="BaseResultMap" type="com.mumway.active.exam.domain.QuestionType" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="question_number" property="questionNumber" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
    <resultMap id="ExamResultMap" type="com.mumway.active.exam.domain.QuestionType" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="question_number" property="questionNumber" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <!-- 一对多的关系 -->
