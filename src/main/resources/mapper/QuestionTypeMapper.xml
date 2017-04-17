@@ -36,6 +36,7 @@
   <sql id="exam_column_list">
   		t.id,
 		t.`name`,
+		t.question_number,
 		q.id qId,
 		q.`name` qName,
 		q.question_type_id,
