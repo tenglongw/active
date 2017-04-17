@@ -3,16 +3,20 @@ package com.mumway.active.exam.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.json.JsonArray;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.mumway.active.exam.domain.AnswerResults;
 import com.mumway.active.exam.domain.QuestionType;
 import com.mumway.active.exam.service.IExamService;
 import com.mumway.active.utile.Result;
@@ -49,6 +53,13 @@ public class ExamController {
 		System.out.println(questionTypeList.toString());
 		result.setStatus(Result.STATUS_OK);
 		result.setData(questionTypeList);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/saveExamQuestion")
+	public Object saveExamQuestion(@RequestBody List<AnswerResults> answerResultsList){
+		Result result = new Result();
 		return result;
 	}
 	

@@ -1,15 +1,19 @@
 package com.mumway.active.exam.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.mumway.active.exam.Mapper.AnswerResultsMapper;
 import com.mumway.active.exam.Mapper.QuestionMapper;
 import com.mumway.active.exam.Mapper.QuestionTypeMapper;
+import com.mumway.active.exam.domain.AnswerResults;
 import com.mumway.active.exam.domain.Question;
 import com.mumway.active.exam.domain.QuestionType;
 import com.mumway.active.exam.service.IExamService;
@@ -22,6 +26,9 @@ public class ExamServiceImpl implements IExamService {
 	
 	@Resource
 	private QuestionTypeMapper questionTypeMapper;
+	
+	@Resource
+	private AnswerResultsMapper answerResultsMapper;
 	/**
 	 * 查询考题
 	 */
@@ -58,7 +65,7 @@ public class ExamServiceImpl implements IExamService {
 					
 			}
 		}
-		return qtList;
+		return null;
 	}
 	
 	/**
@@ -69,18 +76,27 @@ public class ExamServiceImpl implements IExamService {
 	 */
 	private List<Question> randomListByNum(List<Question> questionList, int num){
 		Random random = new Random();
+		Set<Integer> indexSet = new HashSet<Integer>();
 		List<Question> resultList = new ArrayList<Question>();
-		for(int i = 1; i <= num; i++){
+		while(indexSet.size() < num){
 			//获取随机数
 			int index = random.nextInt(num);
+			indexSet.add(index);
+		}
+		for(Integer index : indexSet){
 			//取得随机数对应的题目
 			resultList.add(questionList.get(index));
 		}
 		return resultList;
 	}
 	
+	public void saveExamQuestion(List<AnswerResults> answerResultsList){
+		for(AnswerResults answerResults : answerResultsList){
+			answerResultsMapper.insert(answerResults);
+		}
+	}
+	
 	public QuestionType getQuestionTypeById(int id) {
 		return questionTypeMapper.selectByPrimaryKey(id);
 	}
-
 }
