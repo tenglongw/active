@@ -56,35 +56,35 @@ public class ExamServiceImpl implements IExamService {
 					List<Question> questionList1 = randomListByNum(questionType.getQuestions(), questionType.getQuestionNumber());
 //					questionType.setQuestions(questionList1);
 					resultList.addAll(questionList1);
-					System.out.println("婴幼儿护理="+resultList.size());
+//					System.out.println("婴幼儿护理="+resultList.size());
 					break;
 				case 2:
 					//产妇护理
 					List<Question> questionList2 = randomListByNum(questionType.getQuestions(), questionType.getQuestionNumber());
 //					questionType.setQuestions(questionList2);
 					resultList.addAll(questionList2);
-					System.out.println("产妇护理="+resultList.size());
+//					System.out.println("产妇护理="+resultList.size());
 					break;
 				case 3:
 					//新生儿护理
 					List<Question> questionList3 = randomListByNum(questionType.getQuestions(), questionType.getQuestionNumber());
 //					questionType.setQuestions(questionList3);
 					resultList.addAll(questionList3);
-					System.out.println("新生儿护理="+resultList.size());
+//					System.out.println("新生儿护理="+resultList.size());
 					break;
 				case 4:
 					//催乳
 					List<Question> questionList4 = randomListByNum(questionType.getQuestions(), questionType.getQuestionNumber());
 //					questionType.setQuestions(questionList4);
 					resultList.addAll(questionList4);
-					System.out.println("催乳="+resultList.size());
+//					System.out.println("催乳="+resultList.size());
 					break;
 				default:
 					//营养
 					List<Question> questionList = randomListByNum(questionType.getQuestions(), questionType.getQuestionNumber());
 //					questionType.setQuestions(questionList);
 					resultList.addAll(questionList);
-					System.out.println("营养="+resultList.size());
+//					System.out.println("营养="+resultList.size());
 					break;
 					
 			}

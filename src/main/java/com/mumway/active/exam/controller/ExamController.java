@@ -46,7 +46,7 @@ public class ExamController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getExamQuestion", method = RequestMethod.GET)
-	public Object getExamQuestion(@RequestParam(value = "userId",required = false) String userId){
+	public Object getExamQuestion(){
 		Result result = new Result();
 		List<Question> questionList = examService.queryExamQuestions();
 		result.setStatus(Result.STATUS_OK);
