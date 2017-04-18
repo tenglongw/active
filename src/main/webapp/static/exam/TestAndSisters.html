@@ -2,23 +2,24 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>考试</title>
+<title>考考姐妹</title>
 <link rel="stylesheet" type="text/css" href="css/public.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/Adaptive.js"></script>
+
 <script src="js/jquery-1.8.2.min.js"></script>
-<script src="js/public.js"></script>
 </head>
 
 <body style="background-color:#f3f3f3;">
 <header>
-	<h3 class="top"><a class="cur" href="#">领取奖金</a><a href="#">521规则</a></h3>
+	<h3 class="top"><a class="cur" href="#" data-open="draw">领取奖金</a><a href="#" data-open="ruler">521规则</a></h3>
 </header>
 <section class="section">
-    <div class="test">
+    <div class="test" id="MyPaiMing">
     	<P class="test_tit">你成功邀请XXXX位姐妹</P>
         <P class="test_num"><span>排名：</span><i></i></P>
     </div>
-    <ul class="test_aunt">
+    <ul class="test_aunt" id="testAunt">
     	<li>
         	<P class="test_num"><span>姐妹：</span><i></i></P>
             <P class="test_num"><span>产妇护理</span><i></i></P>
@@ -51,9 +52,14 @@
 </section>
 <footer class="exam">
     <p class="foot_but">
-        <a class="cur" href="#">开始考试</a>
-        <a href="#">转发试卷</a>
+        <a href="myPerformance.html">我的成绩</a>
+        <a class="cur" href="TestAndSisters.html" data-open="testSister">考考姐妹</a>
     </p>
 </footer>
+
+<div id="myPerformanceCon"></div>
+<script src="js/public.js"></script>
+<script src="js/TestAndSisters.js"></script>
+
 </body>
 </html>

@@ -1,29 +1,55 @@
-/***********自适应代码*************/
-var phoneWidth = parseInt(window.screen.width);
-var phoneScale = phoneWidth / 640;
-var ua = navigator.userAgent;
-if (/Android (\d+\.\d+)/.test(ua) ) {
-	var version = parseFloat(RegExp.$1);
-	if (version > 2.3) {
-		document.write('<meta name="viewport" content="width=640, initial-scale= ' + phoneScale + ' ,minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">')
-	} else {
-		document.write('<meta name="viewport" content="width=640, initial-scale= ' + phoneScale + ' , target-densitydpi=device-dpi">')
+// 服务器IP地址
+var SeverIp = 'http://192.168.1.100:8080/active/exam/';
+
+// 从服务器获取到的题库
+var SeverTopicData = null;
+var openId = 'yangyue';
+
+// 用户评级
+var UserRate = ['差','差','较差','一般','良','优秀']
+
+// 提交到服务器的答案
+var GoSeverAnswerData = {
+	Answer:[],
+	ScoringDbject:{
+		infantNurse:0,
+		puerperaNurse:0,
+		newbornNurse:0,
+		lactagogue:0,
+		nutrition:0,
 	}
-} else {
-	document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">')
+};
+
+
+// 题库类型
+var  AnswerType = {
+	1:'婴幼儿护理',
+	2:'产妇护理',
+	3:'新生儿护理',
+	4:'催乳',
+	5:'营养',
 }
 
-/***********抓取代码*************/
-var _vds = _vds || [];
-window._vds = _vds;
-(function(){
-_vds.push(['setAccountId', '87405247014f637f']);
-(function() {
-  var vds = document.createElement('script');
-  vds.type='text/javascript';
-  vds.async = true;
-  vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(vds, s);
-})();
-})();
+
+
+
+
+function AddAlertCon() {
+	$('body').append('<div id="AlertCon"><span></span></div>');
+	$('#myPerformanceCon').load('popUpWindows.html');
+}
+
+AddAlertCon();
+
+function AlertConFun(string) {
+	$('#AlertCon').find('span').text(string);
+	$('#AlertCon').show();
+
+	setTimeout(function() {
+		$('#AlertCon').hide();
+	},2000)
+
+}
+
+
+// AlertConFun('yangyue');

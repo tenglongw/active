@@ -39,11 +39,6 @@ public class ExamController {
 	@Resource
 	private IUserWeixinService userWeixinService;
 	
-	public ModelAndView index(){
-		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
-	
 	/**
 	 * 返回考试题目
 	 * @param userId
@@ -78,6 +73,11 @@ public class ExamController {
 		return result;
 	}
 	
+	/**
+	 * 检查用户是否关注
+	 * @param openid
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "isAttention")
 	public Object isAttention(@RequestParam(value = "openid") String openid){
