@@ -1,5 +1,7 @@
 package com.mumway.active.exam.Mapper;
 
+import java.util.List;
+
 import com.mumway.active.exam.domain.Question;
 
 public interface QuestionMapper {
@@ -14,5 +16,7 @@ public interface QuestionMapper {
     int updateByPrimaryKeySelective(Question record);
 
     int updateByPrimaryKey(Question record);
+    
+    List<Question> getExamInfoByOpenid(String openid);
     
 }

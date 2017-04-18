@@ -60,7 +60,6 @@
     <!-- 带状态的视图控制器标签 
 	<mvc:view-controller path="/error/404.html" status-code="404" />-->
     
-    
      <!-- 内容协商管理器  -->
     <!--1、首先检查路径扩展名（如my.pdf）；2、其次检查Parameter（如my?format=pdf）；3、检查Accept Header-->
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">

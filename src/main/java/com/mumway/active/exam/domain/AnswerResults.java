@@ -7,9 +7,13 @@ public class AnswerResults {
 
     private Integer userId;
 
+    private Integer questionId;
+
     private Integer value;
 
     private String questionAnswserOption;
+
+    private String isCorrect;
 
     private Date updateTime;
 
@@ -31,6 +35,14 @@ public class AnswerResults {
         this.userId = userId;
     }
 
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
+    }
+
     public Integer getValue() {
         return value;
     }
@@ -45,6 +57,14 @@ public class AnswerResults {
 
     public void setQuestionAnswserOption(String questionAnswserOption) {
         this.questionAnswserOption = questionAnswserOption == null ? null : questionAnswserOption.trim();
+    }
+
+    public String getIsCorrect() {
+        return isCorrect;
+    }
+
+    public void setIsCorrect(String isCorrect) {
+        this.isCorrect = isCorrect == null ? null : isCorrect.trim();
     }
 
     public Date getUpdateTime() {

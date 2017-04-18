@@ -20,7 +20,27 @@ public class Question {
     
     private List<QuestionAnswer> qAnswers;
     
-    public Integer getId() {
+    private String isAnswerCorrect;
+    
+    private Integer answerId;
+    
+    public Integer getAnswerId() {
+		return answerId;
+	}
+
+	public void setAnswerId(Integer answerId) {
+		this.answerId = answerId;
+	}
+
+	public String getIsAnswerCorrect() {
+		return isAnswerCorrect;
+	}
+
+	public void setIsAnswerCorrect(String isAnswerCorrect) {
+		this.isAnswerCorrect = isAnswerCorrect;
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -76,11 +96,11 @@ public class Question {
         this.createTime = createTime;
     }
 
-	public List<QuestionAnswer> getqAnswers() {
+	public List<QuestionAnswer> getQAnswers() {
 		return qAnswers;
 	}
 
-	public void setqAnswers(List<QuestionAnswer> qAnswers) {
+	public void setQAnswers(List<QuestionAnswer> qAnswers) {
 		this.qAnswers = qAnswers;
 	}
 }

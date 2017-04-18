@@ -16,7 +16,7 @@ public class QuestionAnswer {
     private Date updateTime;
 
     private Date createTime;
-
+    
     public Integer getId() {
         return id;
     }

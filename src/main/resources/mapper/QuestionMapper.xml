@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mumway.active.exam.IDao.QuestionMapper" >
+<mapper namespace="com.mumway.active.exam.Mapper.QuestionMapper" >
   <resultMap id="BaseResultMap" type="com.mumway.active.exam.domain.Question" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="question_type_id" property="questionTypeId" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="isAnswerCorrect" property="isAnswerCorrect" jdbcType="CHAR" />
+    <result column="answerId" property="answerId" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <collection property="qAnswers" ofType="QuestionAnswer">
+		<id column="qaId" property="id"/>
+		<result column="qaName" property="name"/>
+		<result column="option" property="option"/>
+		<result column="question_id" property="questionId"/>
+		<result column="isCorrect" property="isCorrect"/>
+	</collection>
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, question_type_id, score, sort, update_time, create_time
   </sql>
+  
+  <sql id="exam_column_list">
+		q.id ,
+		q.`name`,
+		q.question_type_id,
+		q.score,
+		q.sort,
+		r.is_correct isAnswerCorrect,
+		r.`value` answerId,
+		qa.id qaId,
+		qa.`name` qaName,
+		qa.`option`,
+		qa.question_id,
+		qa.isCorrect
+  </sql>
+  <select id="getExamInfoByOpenid" resultMap="BaseResultMap">
+  	SELECT
+		<include refid="exam_column_list" />
+	FROM
+		active_question_type t
+	JOIN active_question q ON t.id = q.question_type_id
+	JOIN active_question_answer qa ON q.id = qa.question_id
+	JOIN active_answer_results r ON q.id = r.question_id
+	 where r.openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

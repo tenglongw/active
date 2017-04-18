@@ -4,13 +4,17 @@
   <resultMap id="BaseResultMap" type="com.mumway.active.exam.domain.AnswerResults" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="question_id" property="questionId" jdbcType="INTEGER" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
     <result column="value" property="value" jdbcType="INTEGER" />
     <result column="question_answser_option" property="questionAnswserOption" jdbcType="CHAR" />
+    <result column="is_correct" property="isCorrect" jdbcType="CHAR" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, value, question_answser_option, update_time, create_time
+    id, user_id, question_id, value, question_answser_option, is_correct, update_time, 
+    create_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,12 +27,20 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.mumway.active.exam.domain.AnswerResults" >
-    insert into active_answer_results (id, user_id, value, 
-      question_answser_option, update_time, create_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{value,jdbcType=INTEGER}, 
-      #{questionAnswserOption,jdbcType=CHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
-      )
+    insert into active_answer_results (id, user_id, question_id, 
+      value, question_answser_option, is_correct, 
+      update_time, create_time,openid)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER}, 
+      #{value,jdbcType=INTEGER}, #{questionAnswserOption,jdbcType=CHAR}, #{isCorrect,jdbcType=CHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{openid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertMap" parameterType="java.util.Map" >
+    insert into active_answer_results (id, user_id, question_id, 
+      value, question_answser_option, is_correct, 
+      update_time, create_time,openid)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER}, 
+      #{value,jdbcType=INTEGER}, #{questionAnswserOption,jdbcType=CHAR}, #{isCorrect,jdbcType=CHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{openid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.mumway.active.exam.domain.AnswerResults" >
     insert into active_answer_results
@@ -39,11 +51,17 @@
       <if test="userId != null" >
         user_id,
       </if>
+      <if test="questionId != null" >
+        question_id,
+      </if>
       <if test="value != null" >
         value,
       </if>
       <if test="questionAnswserOption != null" >
         question_answser_option,
+      </if>
+      <if test="isCorrect != null" >
+        is_correct,
       </if>
       <if test="updateTime != null" >
         update_time,
@@ -59,11 +77,17 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=INTEGER},
+      </if>
       <if test="value != null" >
         #{value,jdbcType=INTEGER},
       </if>
       <if test="questionAnswserOption != null" >
         #{questionAnswserOption,jdbcType=CHAR},
+      </if>
+      <if test="isCorrect != null" >
+        #{isCorrect,jdbcType=CHAR},
       </if>
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
@@ -79,11 +103,17 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="questionId != null" >
+        question_id = #{questionId,jdbcType=INTEGER},
+      </if>
       <if test="value != null" >
         value = #{value,jdbcType=INTEGER},
       </if>
       <if test="questionAnswserOption != null" >
         question_answser_option = #{questionAnswserOption,jdbcType=CHAR},
+      </if>
+      <if test="isCorrect != null" >
+        is_correct = #{isCorrect,jdbcType=CHAR},
       </if>
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -97,8 +127,10 @@
   <update id="updateByPrimaryKey" parameterType="com.mumway.active.exam.domain.AnswerResults" >
     update active_answer_results
     set user_id = #{userId,jdbcType=INTEGER},
+      question_id = #{questionId,jdbcType=INTEGER},
       value = #{value,jdbcType=INTEGER},
       question_answser_option = #{questionAnswserOption,jdbcType=CHAR},
+      is_correct = #{isCorrect,jdbcType=CHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mumway.active.exam.Mapper.UserRateMapper" >
+  <resultMap id="BaseResultMap" type="com.mumway.active.exam.domain.UserRate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="infant_nurse" property="infantNurse" jdbcType="INTEGER" />
+    <result column="puerpera_nurse" property="puerperaNurse" jdbcType="INTEGER" />
+    <result column="newborn_nurse" property="newbornNurse" jdbcType="INTEGER" />
+    <result column="lactagogue" property="lactagogue" jdbcType="INTEGER" />
+    <result column="nutrition" property="nutrition" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_name, phone, infant_nurse, puerpera_nurse, newborn_nurse, lactagogue, nutrition
+  </sql>
+   <sql id="Sisters_Column_List" >
+    u.id, u.user_name, u.phone, u.infant_nurse, u.puerpera_nurse, u.newborn_nurse, u.lactagogue, u.nutrition
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from active_user_rate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="selectByOpenid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from active_user_rate
+    where openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getSistersRateByOpenid" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT
+	 <include refid="Sisters_Column_List" />
+	FROM
+		user_weixin_active uw
+	JOIN active_user_rate u ON uw.openid = u.openid
+	WHERE
+		 uw.from_openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getSistersRanking" resultType="java.util.Map">
+  	select count(wa.from_openid) num ,wa.from_openid openid 
+  	from user_weixin_active wa 
+	JOIN active_user_rate u ON wa.openid = u.openid
+  	GROUP BY wa.from_openid 
+  	order by count(wa.from_openid) desc
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from active_user_rate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mumway.active.exam.domain.UserRate" >
+    insert into active_user_rate (id, user_name, phone, 
+      infant_nurse, puerpera_nurse, newborn_nurse, 
+      lactagogue, nutrition)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{infantNurse,jdbcType=INTEGER}, #{puerperaNurse,jdbcType=INTEGER}, #{newbornNurse,jdbcType=INTEGER}, 
+      #{lactagogue,jdbcType=INTEGER}, #{nutrition,jdbcType=INTEGER})
+  </insert>
+   <insert id="insertMap" parameterType="java.util.Map" >
+    insert into active_user_rate (id, user_name, phone, 
+      infant_nurse, puerpera_nurse, newborn_nurse, 
+      lactagogue, nutrition,openid)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{infantNurse,jdbcType=INTEGER}, #{puerperaNurse,jdbcType=INTEGER}, #{newbornNurse,jdbcType=INTEGER}, 
+      #{lactagogue,jdbcType=INTEGER}, #{nutrition,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mumway.active.exam.domain.UserRate" >
+    insert into active_user_rate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="infantNurse != null" >
+        infant_nurse,
+      </if>
+      <if test="puerperaNurse != null" >
+        puerpera_nurse,
+      </if>
+      <if test="newbornNurse != null" >
+        newborn_nurse,
+      </if>
+      <if test="lactagogue != null" >
+        lactagogue,
+      </if>
+      <if test="nutrition != null" >
+        nutrition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="infantNurse != null" >
+        #{infantNurse,jdbcType=INTEGER},
+      </if>
+      <if test="puerperaNurse != null" >
+        #{puerperaNurse,jdbcType=INTEGER},
+      </if>
+      <if test="newbornNurse != null" >
+        #{newbornNurse,jdbcType=INTEGER},
+      </if>
+      <if test="lactagogue != null" >
+        #{lactagogue,jdbcType=INTEGER},
+      </if>
+      <if test="nutrition != null" >
+        #{nutrition,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mumway.active.exam.domain.UserRate" >
+    update active_user_rate
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="infantNurse != null" >
+        infant_nurse = #{infantNurse,jdbcType=INTEGER},
+      </if>
+      <if test="puerperaNurse != null" >
+        puerpera_nurse = #{puerperaNurse,jdbcType=INTEGER},
+      </if>
+      <if test="newbornNurse != null" >
+        newborn_nurse = #{newbornNurse,jdbcType=INTEGER},
+      </if>
+      <if test="lactagogue != null" >
+        lactagogue = #{lactagogue,jdbcType=INTEGER},
+      </if>
+      <if test="nutrition != null" >
+        nutrition = #{nutrition,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mumway.active.exam.domain.UserRate" >
+    update active_user_rate
+    set user_name = #{userName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=CHAR},
+      infant_nurse = #{infantNurse,jdbcType=INTEGER},
+      puerpera_nurse = #{puerperaNurse,jdbcType=INTEGER},
+      newborn_nurse = #{newbornNurse,jdbcType=INTEGER},
+      lactagogue = #{lactagogue,jdbcType=INTEGER},
+      nutrition = #{nutrition,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
