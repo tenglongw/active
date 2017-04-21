@@ -2,8 +2,8 @@
 <Configuration monitorInterval="1800">
 
     <properties>
-        <property name="LOG_HOME">/usr/share/tomcat/logs</property>
-        <property name="FILE_NAME">czlylog</property>
+        <property name="LOG_HOME">/opt/tomcat/logs</property>
+        <property name="FILE_NAME">activelog</property>
     </properties>
 
     <Appenders>

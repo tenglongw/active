@@ -49,6 +49,7 @@ public class ExamController {
 	@ResponseBody
 	@RequestMapping(value = "/getExamQuestion", method = RequestMethod.GET)
 	public Object getExamQuestion(){
+		logger.info("----getExamQuestion  start ----");
 		Result result = new Result();
 		List<Question> questionList = null;
 		try {
@@ -72,6 +73,7 @@ public class ExamController {
 	@ResponseBody
 	@RequestMapping(value = "/saveExamQuestion", method = RequestMethod.POST)
 	public Object saveExamQuestion(@RequestBody Map<String,Object> answerMap){
+		logger.info("----saveExamQuestion  start ----");
 		Result result = new Result();
 		try {
 			examService.saveQuestionAnswers((List<Map<String, Object>>) answerMap.get("Answer"));
@@ -93,6 +95,7 @@ public class ExamController {
 	@ResponseBody
 	@RequestMapping(value = "isAttention")
 	public Object isAttention(@RequestParam(value = "openid") String openid){
+		logger.info("----isAttention  start ----{openid:"+openid+"}");
 		Result result = new Result();
 		Map<String, Boolean> ret = new HashMap<String, Boolean>();
 		if(examService.isAttention(openid)){
@@ -118,6 +121,7 @@ public class ExamController {
 	@ResponseBody
 	@RequestMapping(value = "isLogin")
 	public Object isLogin(@RequestParam(value = "openid") String openid){
+		logger.info("----isLogin  start ----{openid:"+openid+"}");
 		Result result = new Result();
 		Map<String, Boolean> ret = new HashMap<String, Boolean>();
 		if(examService.isLogin(openid)){
@@ -142,6 +146,7 @@ public class ExamController {
 	@ResponseBody
 	@RequestMapping(value = "/getExamInfo")
 	public Object getQuestionType(@RequestParam(value = "openid") String openid){
+		logger.info("----getExamInfo  start ----{openid:"+openid+"}");
 		Result result = new Result();
 		//我的答题
 		List<Question> questionList = null;
@@ -159,6 +164,11 @@ public class ExamController {
 		resultMap.put("userRate", userRate);
 		result.setData(resultMap);
 		result.setStatus(Result.STATUS_OK);
+		result.setMsg(Result.MSG_OK);
+		if(questionList.size() == 0 && null == userRate){
+			result.setStatus(Result.STATUS_FAIL);
+			result.setMsg(Result.MSG_FAIL);
+		}
 		return result;  
 	}
 	
@@ -169,6 +179,7 @@ public class ExamController {
 	@ResponseBody
 	@RequestMapping(value = "/getSistersRate")
 	public Object getSistersRate(@RequestParam(value = "openid") String openid){
+		logger.info("----getSistersRate  start ----{openid:"+openid+"}");
 		Result result = new Result();
 		//姐妹答题信息
 		List<UserRate> userRateList = null;
