@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.mumway.active.exam.domain.Question;
 import com.mumway.active.exam.domain.UserRate;
 import com.mumway.active.exam.service.IExamService;
 import com.mumway.active.exam.service.IUserWeixinService;
 import com.mumway.active.utile.Result;
+
+
+
 
 /**
  * 考试
@@ -48,7 +50,13 @@ public class ExamController {
 	@RequestMapping(value = "/getExamQuestion", method = RequestMethod.GET)
 	public Object getExamQuestion(){
 		Result result = new Result();
-		List<Question> questionList = examService.queryExamQuestions();
+		List<Question> questionList = null;
+		try {
+			questionList = examService.queryExamQuestions();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("getExamQuestion error !!"+e.getMessage());
+		}
 		result.setStatus(Result.STATUS_OK);
 		result.setData(questionList);
 		result.setMsg(Result.MSG_OK);
@@ -65,9 +73,13 @@ public class ExamController {
 	@RequestMapping(value = "/saveExamQuestion", method = RequestMethod.POST)
 	public Object saveExamQuestion(@RequestBody Map<String,Object> answerMap){
 		Result result = new Result();
-		examService.saveQuestionAnswers((List<Map<String, Object>>) answerMap.get("Answer"));
-		
-		examService.saveUserRate((Map<String, Object>) answerMap.get("ScoringDbject"));
+		try {
+			examService.saveQuestionAnswers((List<Map<String, Object>>) answerMap.get("Answer"));
+			examService.saveUserRate((Map<String, Object>) answerMap.get("ScoringDbject"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("saveExamQuestion error !!"+e.getMessage());
+		}
 		result.setMsg(Result.MSG_OK);
 		result.setStatus(Result.STATUS_OK);
 		return result;
@@ -82,8 +94,44 @@ public class ExamController {
 	@RequestMapping(value = "isAttention")
 	public Object isAttention(@RequestParam(value = "openid") String openid){
 		Result result = new Result();
-		result.setMsg(Result.MSG_OK);
-		result.setStatus(Result.STATUS_OK);
+		Map<String, Boolean> ret = new HashMap<String, Boolean>();
+		if(examService.isAttention(openid)){
+			ret.put("isAttention", true);
+			result.setData(ret);
+			result.setMsg(Result.MSG_OK);
+			result.setStatus(Result.STATUS_OK);
+		}else{
+			ret.put("isAttention", false);
+			result.setData(ret);
+			result.setMsg(Result.MSG_FAIL);
+			result.setStatus(Result.STATUS_FAIL);
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * 检查用户是否登录
+	 * @param openid
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "isLogin")
+	public Object isLogin(@RequestParam(value = "openid") String openid){
+		Result result = new Result();
+		Map<String, Boolean> ret = new HashMap<String, Boolean>();
+		if(examService.isLogin(openid)){
+			ret.put("isLogin", true);
+			result.setData(ret);
+			result.setMsg(Result.MSG_OK);
+			result.setStatus(Result.STATUS_OK);
+		}else{
+			ret.put("isLogin", false);
+			result.setData(ret);
+			result.setMsg(Result.MSG_FAIL);
+			result.setStatus(Result.STATUS_FAIL);
+		}
+		
 		return result;
 	}
 	
@@ -96,15 +144,22 @@ public class ExamController {
 	public Object getQuestionType(@RequestParam(value = "openid") String openid){
 		Result result = new Result();
 		//我的答题
-		List<Question> questionList = examService.getExamInfoByOpenid(openid);
+		List<Question> questionList = null;
 		//我的答题等级
-		UserRate userRate = examService.getUserRateInfoByOpenid(openid);
+		UserRate userRate = null;
+		try {
+			questionList = examService.getExamInfoByOpenid(openid);
+			userRate = examService.getUserRateInfoByOpenid(openid);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("getExamInfo error !!"+ e.getMessage());
+		}
 		Map<String,Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("questionList", questionList);
 		resultMap.put("userRate", userRate);
 		result.setData(resultMap);
 		result.setStatus(Result.STATUS_OK);
-		return result;
+		return result;  
 	}
 	
 	/**获取我的考试成绩
@@ -116,9 +171,16 @@ public class ExamController {
 	public Object getSistersRate(@RequestParam(value = "openid") String openid){
 		Result result = new Result();
 		//姐妹答题信息
-		List<UserRate> userRateList = userWeixinService.getSistersRateByOpenid(openid);
+		List<UserRate> userRateList = null;
 		//邀请姐妹排名
-		int ranking = userWeixinService.getSistersRanking(openid);
+		int ranking = 0;
+		try {
+			userRateList = userWeixinService.getSistersRateByOpenid(openid);
+			ranking = userWeixinService.getSistersRanking(openid);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("getSistersRate error !!"+e.getMessage());
+		}
 		Map<String,Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("userRateList", userRateList);
 		resultMap.put("total", userRateList.size());

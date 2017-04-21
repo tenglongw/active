@@ -21,6 +21,7 @@ import com.mumway.active.exam.domain.Question;
 import com.mumway.active.exam.domain.QuestionType;
 import com.mumway.active.exam.domain.UserRate;
 import com.mumway.active.exam.domain.UserWeixin;
+import com.mumway.active.exam.domain.UserWeixinLbq;
 import com.mumway.active.exam.service.IExamService;
 
 @Service
@@ -131,6 +132,10 @@ public class ExamServiceImpl implements IExamService {
 	}
 
 	public boolean isAttention(String openid) {
+		UserWeixinLbq userlbq = userWeixinLbqMapper.getUserlbqByOpenid(openid);
+		if(userlbq != null){
+			return true;
+		}
 		return false;
 	}
 
@@ -145,6 +150,14 @@ public class ExamServiceImpl implements IExamService {
 	public UserRate getUserRateInfoByOpenid(String openid) {
 		// TODO Auto-generated method stub
 		return userRateMapper.selectByOpenid(openid);
+	}
+
+	/**
+	 * 检查是否登录
+	 */
+	public boolean isLogin(String openid) {
+		
+		return null != userWeixinMapper.selectByOpenid(openid) ? true : false;
 	}
 
 }

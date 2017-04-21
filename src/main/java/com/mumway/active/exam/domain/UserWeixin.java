@@ -10,8 +10,18 @@ public class UserWeixin {
     private String unionid;
 
     private String fromUnionid;
+    
+    private String fromOpenid;
 
-    public String getOpenid() {
+    public String getFromOpenid() {
+		return fromOpenid;
+	}
+
+	public void setFromOpenid(String fromOpenid) {
+		this.fromOpenid = fromOpenid;
+	}
+
+	public String getOpenid() {
         return openid;
     }
 

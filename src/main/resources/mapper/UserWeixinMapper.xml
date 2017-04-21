@@ -7,13 +7,25 @@
     <result column="headimgurl" property="headimgurl" jdbcType="VARCHAR" />
     <result column="unionid" property="unionid" jdbcType="VARCHAR" />
     <result column="from_unionid" property="fromUnionid" jdbcType="VARCHAR" />
+    <result column="from_openid" property="fromOpenid" jdbcType="VARCHAR" />
   </resultMap>
+  
+  <sql id="base_colum_sql">
+  	u.openid,u.nickname,u.headimgurl,u.unionid,u.from_unionid,u.from_openid
+  </sql>
+  
   <insert id="insert" parameterType="com.mumway.active.exam.domain.UserWeixin" >
     insert into user_weixin_active (openid, nickname, headimgurl, 
       unionid, from_unionid)
     values (#{openid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR}, 
       #{unionid,jdbcType=VARCHAR}, #{fromUnionid,jdbcType=VARCHAR})
   </insert>
+  
+  <select id="selectByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select <include refid="base_colum_sql" />
+  	 from user_weixin_active u where u.openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  
   <insert id="insertSelective" parameterType="com.mumway.active.exam.domain.UserWeixin" >
     insert into user_weixin_active
     <trim prefix="(" suffix=")" suffixOverrides="," >

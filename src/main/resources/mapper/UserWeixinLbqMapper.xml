@@ -33,6 +33,11 @@
     from user_weixin_lbq
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getUserlbqByOpenid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select lbq.*
+    from user_weixin_lbq lbq,user_weixin_active active
+    where active.openid = #{openid,jdbcType=VARCHAR} and lbq.unionid = active.unionid and lbq.state = 1
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_weixin_lbq
     where id = #{id,jdbcType=INTEGER}

@@ -16,4 +16,6 @@ public interface UserWeixinLbqMapper {
     int updateByPrimaryKeyWithBLOBs(UserWeixinLbq record);
 
     int updateByPrimaryKey(UserWeixinLbq record);
+    
+    UserWeixinLbq getUserlbqByOpenid(String openid);
 }

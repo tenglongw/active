@@ -6,4 +6,6 @@ public interface UserWeixinMapper {
     int insert(UserWeixin record);
 
     int insertSelective(UserWeixin record);
+    
+    UserWeixin selectByOpenid(String openid);
 }

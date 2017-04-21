@@ -44,4 +44,6 @@ public interface IExamService {
 	 * @return
 	 */
 	public UserRate getUserRateInfoByOpenid(String openid);
+	
+	public boolean isLogin(String openid);
 }
