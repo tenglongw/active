@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,8 +75,12 @@ public class ExamController {
 		logger.info("----saveExamQuestion  start ----");
 		Result result = new Result();
 		try {
-			examService.saveQuestionAnswers((List<Map<String, Object>>) answerMap.get("Answer"));
-			examService.saveUserRate((Map<String, Object>) answerMap.get("ScoringDbject"));
+			Map<String,Object> scoring = (Map<String, Object>)answerMap.get("ScoringDbject");
+			UserRate userRate = examService.getUserRateInfoByOpenid((String) scoring.get("openid"));
+			if(null == userRate){
+				examService.saveQuestionAnswers((List<Map<String, Object>>) answerMap.get("Answer"));
+				examService.saveUserRate((Map<String, Object>) answerMap.get("ScoringDbject"));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("saveExamQuestion error !!"+e.getMessage());
